@@ -1,21 +1,6 @@
-package Week1;
+import java.util.*;
 
-public  Static int  minInRotateedSortedArray {
-    public static int findMin(int[] arr) {
-        int l = 0, r = arr.length - 1;
-
-        while (l < r) {
-            int mid = l + (r - l) / 2;
-
-            if (arr[mid] > arr[r]) {
-                l = mid + 1;
-            } else {
-                r = mid;
-            }
-        }
-
-        return arr[l];
-    }
+class minInRotatedSortedArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -31,5 +16,23 @@ public  Static int  minInRotateedSortedArray {
         int result = findMin(arr);
         System.out.println("Minimum element is: " + result);
     }
+    public static int findMin(int[] nums) {
+        int n = nums.length;
+        int low = 0;
+        int high = n-1;
+
+        while(low < high){
+            int mid = low - ((low - high)/2);
+
+            if(nums[mid] >= nums[high]){
+                low = mid + 1;
+            }
+            else{
+                high = mid;
+            }
+        }
+        return nums[low];
+    }
 }
+
 
